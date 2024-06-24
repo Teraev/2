@@ -1,0 +1,13 @@
+.navigator {
+  background-color: #c4c4c4;
+  width: 50%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    all: unset;
+    color: blue;
+    cursor: pointer;
+  }
+}
