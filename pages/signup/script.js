@@ -1,24 +1,53 @@
-const signupButton = document.querySelector('.sign_up_btn');
+import { postData } from "../../lib/http.request"
+const form = document.forms.namedItem('signup')
 
-const email = document.querySelector('.sign_up_email');
-const name = document.querySelector('.sign_up_name');
-const surname = document.querySelector('.sign_up_surname');
-const password = document.querySelector('.sign_up_pass');
+let patterns = {
+    name: /^[A-Za-z]{1,30}$/,
+    surname: /^[A-Za-z]{1,30}$/,
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+}
 
-signupButton.onclick = () => {
-    const email_val  = email.value
-    const name_val = name.value
-    const surname_val = surname.value
-    const password_val = password.value
-
-    let user = {
-        email: email_val,
-        name: name_val,
-        surname: surname_val,
-        password: password_val
-    };
-
+form.onsubmit = async (e) => {
+    e.preventDefault();
     
-    localStorage.setItem('user', JSON.stringify(user));
-   
-};
+    const fm = new FormData(e.target)
+    const user = {
+        id: crypto.randomUUID(),
+        name: fm.get('name'),
+        surname: fm.get('surname'),
+        email: fm.get('email'),
+        password: fm.get('password')
+    }
+
+    if (!patterns.email.test(user.email)) {
+        alert('Неправильный email адрес');
+        return;
+    }
+
+    if (!patterns.name.test(user.name)) {
+        alert('Неправильное Имя');
+        return;
+    }
+
+    if (!patterns.surname.test(user.surname)) {
+        alert('Неправильная Фамилия');
+        return;
+    }
+
+    if (user.password.length < 6) {
+        alert('Пароль должен содержать 6 символов');
+        return;
+    }
+
+    const res = await postData('/users', user)
+
+    if (res.status === 200 || res.status === 201) {
+        alert('Пользователь создан');
+        localStorage.setItem('user', JSON.stringify(user));
+        location.assign('/pages/signin/');
+        return;
+    }
+
+    console.log(res);
+    alert(res?.error?.message);
+}

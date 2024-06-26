@@ -7,15 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="sign-in">
-        <div class="Forms_sign_in">
-            <h1>Войти в аккаунт</h1>
-            <input class="sign_in_email" placeholder="Почта" type="text">
-            <input class="sign_in_pass" placeholder="Пароль" type="text">
-            <button class="sign_in_btn">Продолжить</button>
-            <a href="/pages/signup/">Регистрация</a>
+    <form name="signin">
+        <div class="sign-in">
+            <div class="Forms_sign_in">
+                <h1>Войти в аккаунт</h1>
+                <input class="sign_in_email" name="email" placeholder="Почта" type="text">
+                <input class="sign_in_pass" name="password" placeholder="Пароль" type="text">
+                <button class="sign_in_btn">Продолжить</button>
+                <a href="/pages/signup/">Регистрация</a>
+            </div>
         </div>
-    </div>
+
+    </form>
 
     <script type="module" src="./script.js"></script>
 </body>

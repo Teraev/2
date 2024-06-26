@@ -1,19 +1,23 @@
-const sign_in_email = document.querySelector('.sign_in_email')
-const sign_in_pass = document.querySelector('.sign_in_pass')
-const sign_in_btn = document.querySelector('.sign_in_btn')
+import { postData } from "../../lib/http.request"
+let loc = JSON.parse(localStorage.getItem('user'))
 
+const forms = document.forms.namedItem('signin')
+const sign_in_email = forms.querySelector('.sign_in_email')
+const sign_in_pass = forms.querySelector('.sign_in_pass')
+let patterns = {
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+}
 
-const userJSON = localStorage.getItem('user');
+forms.onsubmit = (e) => {
+    e.preventDefault()
 
-
-const user = JSON.parse(userJSON);
-
-sign_in_email.value = user.email;
-
-sign_in_btn.onclick = () => {
-    if (sign_in_pass.value === user.password) {
-        window.location.href = '/pages/main/';
+    const email = sign_in_email.value
+    const password = sign_in_pass.value
+    
+    if(email === loc.email && password === loc.password && patterns.email.test(email) ) {
+        alert('Welcome')
+        location.assign('/pages/main/')
     } else {
-        alert('Неверный пароль');
+        alert('Проверьте данные пароль должен содержать 6 символов')
     }
 }

@@ -1,13 +1,20 @@
 .navigator {
-  background-color: #c4c4c4;
-  width: 50%;
-  height: 50px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+}
 
-  a {
-    all: unset;
-    color: blue;
-    cursor: pointer;
-  }
+.navigator a {
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+}
+
+.navigator a:hover {
+  background-color: #8400ff;
+  color: white;
 }
