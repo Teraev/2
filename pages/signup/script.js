@@ -1,10 +1,12 @@
 import { postData } from "../../lib/http.request"
+import { getData } from "../../lib/http.request"
 const form = document.forms.namedItem('signup')
 
 let patterns = {
     name: /^[A-Za-z]{1,30}$/,
     surname: /^[A-Za-z]{1,30}$/,
-    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]|[_]).{8,}$/
 }
 
 form.onsubmit = async (e) => {
@@ -34,9 +36,19 @@ form.onsubmit = async (e) => {
         return;
     }
 
-    if (user.password.length < 6) {
-        alert('Пароль должен содержать 6 символов');
+    if (!patterns.password.test(user.password)) {
+        alert('Пароль должен быть минимум 8 символов, содержать маленькую буквы заглавную букв  один номер и один символ');
         return;
+    }
+
+    const users = await getData('/users?email=' + user.email);
+
+    if (users.status === 200 || users.status === 201) {
+        const existingUser = users.data.find(i => i.email === user.email);
+        if (existingUser) {
+            alert('Такой пользователь существует');
+            return;
+        }
     }
 
     const res = await postData('/users', user)

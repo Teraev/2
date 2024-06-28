@@ -1,7 +1,10 @@
 const container = document.querySelector('.container')
 let loc = JSON.parse(localStorage.getItem('user'))
 
-function reloadHead() {
+
+
+
+export function reloadHead() {
 
     const header = document.createElement('header');
     header.classList.add('header');
@@ -16,9 +19,17 @@ function reloadHead() {
     link1.href = '';
     link1.textContent = 'Главная';
 
+    link1.onclick = () => {
+        location.assign('/')
+    }
+
     const link2 = document.createElement('a');
     link2.href = '';
     link2.textContent = 'Мои Кошельки';
+
+    link2.onclick = () => {
+        location.assign('/pages/allcards/')
+    }
 
     const link3 = document.createElement('a');
     link3.href = '';
@@ -36,6 +47,10 @@ function reloadHead() {
     exit.src = '../../img/exit.svg';
     exit.alt = '';
 
+    exit.onclick = () => {
+        location.assign('/pages/signin/');
+    }
+
     left.classList.add('left');
     right.append(link1, link2, link3);
     left.append(gmail, exit);
@@ -44,7 +59,7 @@ function reloadHead() {
     container.append(header)
 }
 
-function reloadWelcome() {
+export function reloadWelcome() {
     const div = document.createElement('div');
     div.classList.add('welcome_hum');
 
@@ -59,12 +74,24 @@ function reloadWelcome() {
     div.append(welcomeText, link);
 
 
-    // Добавление созданных элементов на страницу
     container.append(div);
 }
 
+function RGB() {
+    function random(up) {
+        return Math.ceil(Math.random() * up)
+    }
 
-function reloadWallets() {
+    let r = random(255)
+    let g = random(255)
+    let b = random(255)
+
+    return `rgb(${r}, ${g}, ${b})`
+}
+ 
+
+
+export function reloadWallets() {
     const walletsAll = document.createElement('div');
     walletsAll.classList.add('wallets_all');
 
@@ -79,6 +106,8 @@ function reloadWallets() {
         const wallet = document.createElement('div');
         wallet.classList.add('wallet');
 
+        wallet.style.background = `linear-gradient(90deg,${RGB()}, ${RGB()})`
+
         const nameCard = document.createElement('p');
         nameCard.classList.add('name_card');
         nameCard.innerText = 'Visa';
@@ -92,68 +121,12 @@ function reloadWallets() {
     }
 
     const viewAll = document.createElement('a');
-    viewAll.href = '';
+    viewAll.href = '/pages/allcards/';
     viewAll.innerText = 'Смотреть все кошельки';
+
+   
 
     walletsAll.append(myWallets, wallets, viewAll);
     container.append(walletsAll);
 }
 
-function reloadTransactions() {
-    const transaction = document.createElement('div')
-    transaction.classList.add('transaction')
-
-    const last_transaction = document.createElement('p')
-    last_transaction.textContent = "Последние транзации"
-    const table = document.createElement('table')
-
-    const thead = document.createElement('thead')
-    const tr = document.createElement('tr')
-    const th1 = document.createElement('th')
-    const th2 = document.createElement('th')
-    const th3 = document.createElement('th')
-    const th4 = document.createElement('th')
-    const th5 = document.createElement('th')
-
-    th1.textContent = "ID"
-    th2.textContent = "Отправлено с кошелька"
-    th3.textContent = "Категория"
-    th4.textContent = "Сумма транзакции"
-    th5.textContent = "Когда"
-
-    tr.append(th1, th2, th3, th4, th5)
-    thead.append(tr)
-
-    const tbody = document.createElement('tbody')
-
-    for (let i = 0; i < 7; i++) {
-        const tr = document.createElement('tr')
-
-        const td1 = document.createElement('td')
-        const td2 = document.createElement('td')
-        const td3 = document.createElement('td')
-        const td4 = document.createElement('td')
-        const td5 = document.createElement('td')
-
-        td1.textContent = "1232312"
-        td2.textContent = "Visa"
-        td3.textContent = "Автомобиль"
-        td4.textContent = "414,000,000"
-        td5.textContent = "4 дня назад"
-
-        tr.append(td1, td2, td3, td4, td5)
-        tbody.append(tr)
-    }
-    table.append(thead, tbody)
-
-    const a = document.createElement('a')
-    a.textContent = "Смотреть все оплаты"
-
-    transaction.append(last_transaction, table, a)
-    container.append(transaction)
-}
-
-reloadHead()
-reloadWelcome()
-reloadWallets()
-reloadTransactions()

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="center">
+            <span>Добавить кошелек</span>
+
+            <form name="addcard">
+                <select name="name" id="select">
+                    <option value="bank">Банк</option>
+                    <option value="Visa">Visa</option>
+                    <option value="MasterCard">MasterCard</option>
+                    <option value="Humo">Humo</option>
+                    <option value="Virtual">Virtual</option>
+                </select>
+                <select name="currency" id="select">
+                    <option value="currency">Валюта</option>
+                    <option value="USDT">USDT</option>
+                    <option value="UZS">UZS</option>
+                    <option value="KZS">KZS</option>
+                    <option value="BTC">BTC</option>
+                </select>
+                <input type="number" placeholder="Баланс" name="balance">
+                <button>Добавить</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
