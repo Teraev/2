@@ -1,13 +1,47 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css">
-    <title>Vite App</title>
-  </head>
-  <body>
-      <div class="container"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="/lib/police.js"></script>
+  <title>Vite App</title>
+</head>
+
+<body>
+  
+
+
+  <div class="container">
+
+  </div>
+
+  <div class="operation">
+    <div class="card-side">
+      <span>Мои кошельки</span>
+      <div class="card-container"></div>
+      <a href="/pages/allcards/">Смотреть все кошельки</a>
+    </div>
+
+    <div class="transaction-side">
+      <span>Последние транзакции</span>
+
+      <div class="transaction">
+        <div class="transaction-container">
+          <span class="span1">ID</span>
+          <span class="span2">Отправлено с кошелька</span>
+          <span class="span3">Категория</span>
+          <span class="span4">Сумма транзации</span>
+          <span class="span5">Когда</span>
+        </div>
+        <div class="transaction_container"></div>
+      </div>
+
+      <a href="/pages/alltransaction/">Смотреть все оплаты</a>
+    </div>
+  </div>
+  <script type="module" src="./main.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,94 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+.header {
+    background-color: #f2f2f2;
+    color: #080808;
+  
+  }
+  
+  .main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .right a {
+    text-decoration: none;
+    margin-right: 20px;
+    color: #000000;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .left p {
+    margin-right: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .exit {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+  
+  
+  .left {
+    display: flex;
+    align-items: center;
+  }
+
+  .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    span {
+        font-size: 48px;
+        font-weight: 700;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        input,
+        select {
+            width: 450px;
+            height: 50px;
+            border-radius: 10px;
+            border: 2px solid #9f9f9f;
+            padding-inline: 20px;
+            font-size: 18px;
+            font-weight: 600;
+
+           
+        }
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        button {
+            width: 450px;
+            height: 50px;
+            border: 2px solid #0047FF;
+            border-radius: 10px;
+            background: #0047FF;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
+}

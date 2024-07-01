@@ -1,28 +1,11 @@
 {
   "users": [
-    {
-      "id": "5fb8dd9e-4dfc-4388-8701-cb8ff257fdc5",
-      "name": "Radmir",
-      "surname": "teraev",
-      "email": "Radmirchik@gmail.com",
-      "password": "Teraev321!"
-    }
+    
   ],
   "cards": [
-    {
-      "id": "7fecd5a6-2637-412f-b01f-6dd3195f9142",
-      "userId": "5fb8dd9e-4dfc-4388-8701-cb8ff257fdc5",
-      "name": "MasterCard",
-      "balance": "2000000",
-      "currency": "UZS"
-    },
-    {
-      "id": "3d011d09-e5cc-4a40-8b6c-50416d7bf763",
-      "userId": "5fb8dd9e-4dfc-4388-8701-cb8ff257fdc5",
-      "name": "Virtual",
-      "balance": "20",
-      "currency": "BTC"
-    }
+  
   ],
-  "transaction": []
+  "transaction": [
+    
+  ]
 }

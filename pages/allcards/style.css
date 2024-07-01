@@ -19,7 +19,7 @@ header {
 }
 
 .main {
-    width: 1200px;
+    width: 80%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -54,7 +54,7 @@ header {
 
 
 .Cards {
-    width: 64%;
+    width: 80%;
     display: flex;
     margin: 0 auto;
     flex-direction: column;
@@ -74,7 +74,7 @@ header {
 .btn {
     background-color: blue;
     color: white;
-    width: 40%;
+    width: 20%;
     margin-top: 20px;
     padding: 20px;
     border: none;

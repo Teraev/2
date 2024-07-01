@@ -1,4 +1,5 @@
 const container = document.querySelector('.container')
+import { getData } from "../lib/http.request";
 let loc = JSON.parse(localStorage.getItem('user'))
 
 
@@ -16,23 +17,18 @@ export function reloadHead() {
     right.classList.add('right');
 
     const link1 = document.createElement('a');
-    link1.href = '';
+    link1.href = '/';
     link1.textContent = 'Главная';
 
-    link1.onclick = () => {
-        location.assign('/')
-    }
-
+   
     const link2 = document.createElement('a');
-    link2.href = '';
+    link2.href = '/pages/allcards/';
     link2.textContent = 'Мои Кошельки';
 
-    link2.onclick = () => {
-        location.assign('/pages/allcards/')
-    }
+
 
     const link3 = document.createElement('a');
-    link3.href = '';
+    link3.href = '/pages/alltransaction/';
     link3.textContent = 'Мои транзакции';
 
 
@@ -88,45 +84,59 @@ function RGB() {
 
     return `rgb(${r}, ${g}, ${b})`
 }
- 
 
 
-export function reloadWallets() {
-    const walletsAll = document.createElement('div');
-    walletsAll.classList.add('wallets_all');
 
-    const myWallets = document.createElement('p');
-    myWallets.classList.add('my_wallets');
-    myWallets.innerText = 'Мои кошельки';
 
-    const wallets = document.createElement('div');
-    wallets.classList.add('wallets');
+export async function reloadCard(item, place) {
+    const wallet = document.createElement('div');
+    wallet.classList.add('wallet');
 
-    for (let i = 0; i < 4; i++) {
-        const wallet = document.createElement('div');
-        wallet.classList.add('wallet');
+    const getColor = () => Math.floor(Math.random() * 256);
 
-        wallet.style.background = `linear-gradient(90deg,${RGB()}, ${RGB()})`
+    wallet.style.background = `linear-gradient(90deg, rgb(${getColor()}, ${getColor()}, ${getColor()}), rgb(${getColor()}, ${getColor()}, ${getColor()}))`;
 
-        const nameCard = document.createElement('p');
-        nameCard.classList.add('name_card');
-        nameCard.innerText = 'Visa';
+    const nameCard = document.createElement('p');
+    nameCard.classList.add('name_card');
+    nameCard.innerText = item.name;
 
-        const valute = document.createElement('p');
-        valute.classList.add('valute');
-        valute.innerText = 'RUB';
+    const valute = document.createElement('p');
+    valute.classList.add('valute');
+    valute.innerText = item.currency;
 
-        wallet.append(nameCard, valute);
-        wallets.append(wallet);
-    }
+    let balanceShown = false;
 
-    const viewAll = document.createElement('a');
-    viewAll.href = '/pages/allcards/';
-    viewAll.innerText = 'Смотреть все кошельки';
+    valute.onclick = () => {
+        if (balanceShown) {
+            valute.innerText = item.currency;
+            balanceShown = false;
+        } else {
+            valute.innerText = item.balance;
+            balanceShown = true;
+        }
+    };
 
-   
-
-    walletsAll.append(myWallets, wallets, viewAll);
-    container.append(walletsAll);
+    wallet.append(nameCard, valute);
+    place.append(wallet);
 }
 
+export async function reloadCards() {
+    const loc = JSON.parse(localStorage.getItem('user'));
+    const cardContainer = document.querySelector('.card-container');
+
+    try {
+        const users = await getData('/cards?userId=' + loc.id);
+
+        if (users.status === 200 || users.status === 201) {
+            cardContainer.innerHTML = "";
+
+            users.data.forEach(card => {
+                reloadCard(card, cardContainer);
+            });
+        } else {
+            console.error("Error fetching card data:", users.status);
+        }
+    } catch (error) {
+        console.error("Error fetching card data:", error);
+    }
+}

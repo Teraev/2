@@ -1,7 +1,6 @@
 import { reloadHead } from "/modules/script.js";
 import { getData } from "/lib/http.request.js";
 
-
 let loc = JSON.parse(localStorage.getItem('user'));
 
 const container = document.querySelector('.container');
@@ -9,44 +8,44 @@ const view_cards = document.querySelector('.view_cards');
 
 function RGB() {
     function random(up) {
-        return Math.ceil(Math.random() * up)
+        return Math.ceil(Math.random() * up);
     }
 
-    let r = random(255)
-    let g = random(255)
-    let b = random(255)
+    let r = random(255);
+    let g = random(255);
+    let b = random(255);
 
-    return `rgb(${r}, ${g}, ${b})`
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
 }
 
- function reloadCard(item, place) { 
+ function reloadCard(item, place) {
     const wallet = document.createElement('div');
     wallet.classList.add('wallet');
 
-    wallet.style.background = `linear-gradient(90deg,${RGB()}, ${RGB()})`
+    wallet.style.background = 'linear-gradient(90deg,' + RGB() + ',' + RGB() + ')';
 
     const nameCard = document.createElement('p');
     nameCard.classList.add('name_card');
-    nameCard.innerText = item.name; 
+    nameCard.innerText = item.name;
 
     const valute = document.createElement('p');
     valute.classList.add('valute');
-    valute.innerText = item.currency; 
+    valute.innerText = item.currency;
 
     let balanceShown = false;
 
-valute.onclick = () => {
-  if (balanceShown) {
-    valute.innerText = item.currency; 
-    balanceShown = false;
-  } else {
-    valute.innerText = item.balance;
-    balanceShown = true;
-  }
-};
+    valute.onclick = () => {
+        if (balanceShown) {
+            valute.innerText = item.currency;
+            balanceShown = false;
+        } else {
+            valute.innerText = item.balance;
+            balanceShown = true;
+        }
+    };
 
     wallet.append(nameCard, valute);
-    place.append(wallet); 
+    place.appendChild(wallet);
 }
 
 async function reloadCards() {
@@ -74,19 +73,16 @@ async function reloadCards() {
         const users = await getData('/cards?userId=' + loc.id);
 
         if (users.status === 200 || users.status === 201) {
-            view_cards.innerHTML = ""; 
+            view_cards.innerHTML = "";
 
-            
-            users.data.forEach(card => { 
-                reloadCard(card , view_cards);
+            users.data.forEach(card => {
+                reloadCard(card, view_cards);
             });
         } else {
             console.error("Error fetching card data:", users.status);
-            
         }
     } catch (error) {
         console.error("Error fetching card data:", error);
-       
     }
 }
 

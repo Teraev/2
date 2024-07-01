@@ -1,0 +1,167 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: #f2f2f2;
+    color: #080808;
+
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.right a {
+    text-decoration: none;
+    margin-right: 20px;
+    color: #000000;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.left p {
+    margin-right: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.exit {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+
+.transactions {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+
+    .user-transactions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            width: fit-content;
+
+        }
+    }
+
+    .transaction {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 60px;
+
+        .transaction-container_ {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            border-bottom: 1px solid #B9C0D1;
+
+            span {
+                font-size: 14px;
+                font-weight: 600;
+                color: #B9C0D1;
+            }
+
+            .span1 {
+                width: 10%;
+            }
+
+            .span2 {
+                width: 35%;
+            }
+
+            .span3 {
+                width: 20%;
+            }
+
+            .span4 {
+                width: 25%;
+            }
+
+            .span5 {
+                width: 10%;
+            }
+        }
+
+       
+    }
+
+     .transaction-row {
+            display: flex;
+            gap: 20px;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            border-bottom: 1px solid black;
+
+            span {
+                font-size: 14px;
+                font-weight: 600;
+                color: black;
+            }
+
+            .transaction-card-id {
+                width: 10%;
+                font-size: 10px;
+            }
+
+            .transaction-card-type {
+                width: 35%;
+                text-transform: uppercase;
+            }
+
+            .transaction-category {
+                width: 20%;
+                text-transform: capitalize;
+            }
+
+            .transaction-amount {
+                width: 25%;
+            }
+
+            .transaction-time {
+                width: 10%;
+            }
+        }
+
+    #add-transactions {
+        margin-top: 25px;
+        width: 450px;
+        height: 50px;
+        background: blue;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
