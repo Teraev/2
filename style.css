@@ -172,10 +172,11 @@
 
       .transaction-row {
           display: flex;
+          gap: 10px;
           flex-direction: row;
           align-items: center;
           width: 100%;
-          height: 40px;
+          height: 50px;
           border-bottom: 1px solid black;
 
           span {
@@ -186,6 +187,7 @@
 
           .transaction-card-id {
               width: 10%;
+              font-size: 10px;
           }
 
           .transaction-card-type {

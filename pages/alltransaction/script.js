@@ -1,4 +1,4 @@
-import { getData } from "../../lib/http.request";
+import { getData , patchData , postData } from "../../lib/http.request";
 import { reloadHead } from "../../modules/script";
 
 const container = document.querySelector('.container')
@@ -26,7 +26,7 @@ function createtransaction(item) {
     transactionTime.classList.add('transaction-time');
 
     transactionId.innerHTML = item.id;
-    transactionType.innerHTML = item.type;
+    transactionType.innerHTML = item.walletId.name;
     transactionCategory.innerHTML = item.category;
     transactionAmount.innerHTML = item.amount;
     transactionTime.innerHTML = item.time;

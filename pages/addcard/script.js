@@ -1,7 +1,19 @@
 const form  = document.forms.namedItem('addcard')
-import { postData } from "../../lib/http.request";
+import { postData , getFixers } from "/lib/http.request";
 
 let loc = JSON.parse(localStorage.getItem('user'))
+
+const select = document.querySelector('#select')
+
+
+getFixers('/symbols')
+.then(symbols => {
+  for (let key in symbols) {
+      let opt = new Option(`${key} (${symbols[key]})`, key)
+      select.append(opt)
+  }
+})
+
 
 
 form.onsubmit = async (e) => {
