@@ -10,9 +10,10 @@ container.innerHTML = "";
 reloadHead(container);
 reloadWelcome(container)
 
-getData('/cards?userId=' + loc.id)
+getData(`/cards?userId=${loc.id}&limit=4`)
     .then(res => {
         reloadCards(res, cardContainer);
+       
     });
 
     getData('/transaction?userId=' + loc.id)

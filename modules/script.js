@@ -116,6 +116,14 @@ export async function reloadCard(item, place) {
         }
     };
 
+    wallet.dataset.walletId = item.id; 
+
+    wallet.onclick = () => {
+        const walletId = wallet.dataset.walletId;
+        localStorage.setItem('selectedWalletId', walletId);
+        location.assign('/pages/currency/');
+    };
+
     wallet.append(nameCard, valute);
     place.append(wallet);
 }
@@ -130,7 +138,7 @@ export async function reloadCards() {
         if (users.status === 200 || users.status === 201) {
             cardContainer.innerHTML = "";
 
-            users.data.forEach(card => {
+            users.data.slice(0 , 4).forEach(card => {
                 reloadCard(card, cardContainer);
             });
         } else {
@@ -175,7 +183,7 @@ export async function reloadTransactions() {
         if (transactions.status === 200) {
             transaction_container.innerHTML = "";
 
-            transactions.data.forEach(transaction => {
+            transactions.data.slice(0 , 7).forEach(transaction => {
                 let transactionElement = createtransaction(transaction);
                 transaction_container.append(transactionElement);
             });

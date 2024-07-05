@@ -44,6 +44,18 @@ function RGB() {
         }
     };
 
+    wallet.dataset.walletId = item.id; 
+
+    wallet.onclick = () => {
+        // Get the wallet ID from the clicked element
+        const walletId = wallet.dataset.walletId;
+
+        // Store the wallet ID in local storage
+        localStorage.setItem('selectedWalletId', walletId);
+
+        location.assign('/pages/currency/');
+    };
+
     wallet.append(nameCard, valute);
     place.appendChild(wallet);
 }

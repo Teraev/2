@@ -27,6 +27,7 @@ form.onsubmit = async (e) => {
     name: fm.get("name"),
     balance: fm.get("balance"),
     currency: fm.get("currency"),
+    created: new Date().toLocaleDateString()
   };
 
 

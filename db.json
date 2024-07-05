@@ -1,11 +1,45 @@
 {
   "users": [
-   
+    {
+      "id": "2eb34300-7009-4d88-a7b0-fdacf7da210f",
+      "name": "Radmir",
+      "surname": "teraev",
+      "email": "radmirteraev5@gmail.com",
+      "password": "Radmir123!"
+    }
   ],
   "cards": [
-   
+    {
+      "id": "a5316597-08c0-412b-a769-5ff1dcd4f3bf",
+      "userId": "2eb34300-7009-4d88-a7b0-fdacf7da210f",
+      "name": "Humo",
+      "balance": 180000,
+      "currency": "UZS",
+      "created": "05.07.2024"
+    },
+    {
+      "id": "35837b6b-9e6e-41db-ab2b-bd620e35430c",
+      "userId": "2eb34300-7009-4d88-a7b0-fdacf7da210f",
+      "name": "Virtual",
+      "balance": "200",
+      "currency": "BTC",
+      "created": "05.07.2024"
+    }
   ],
   "transaction": [
-   
+    {
+      "id": "ddb73744-5466-4e28-94da-8b9941b6d444",
+      "userId": "2eb34300-7009-4d88-a7b0-fdacf7da210f",
+      "amount": "20000",
+      "category": "food",
+      "time": "05.07.2024",
+      "wallet": "a5316597-08c0-412b-a769-5ff1dcd4f3bf",
+      "walletId": {
+        "name": "Humo",
+        "balance": "200000",
+        "currency": "UZS",
+        "created": "05.07.2024"
+      }
+    }
   ]
 }
