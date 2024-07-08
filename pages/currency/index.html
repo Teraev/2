@@ -14,6 +14,10 @@
 
     <header class="container"></header>
 
+
+    <div class="cards" data-tilt data-tilt-max="-30" data-tilt-speed="200" data-tilt-perspective="500"></div>
+    </div>
+
     <div class="container_currency">
         <p class="wallets">Wallets</p>
 
@@ -31,33 +35,40 @@
         <div class="traiding">
             <div class="choose_currenc">
                 <h1>Transaction History</h1>
-                
-                <div class="choose_currency">
-                    <select name="currency" id="currency"></select>
-                    <select name="date" id="date"></select>
-                </div>
+
+                <canvas ></canvas>
             </div>
         </div>
-            
 
 
-            <div class="convent">
-                <h1>Currecy Conversion</h1>
 
+        <div class="convent">
+            <h1>Currecy Conversion</h1>
+
+            <form name="convert">
                 <div class="choose_convense">
                     <select name="convense" id="convense"></select>
                     <select name="curens" id="curens"></select>
                 </div>
-
+    
                 <div class="convense_money">
-                    <input placeholder="100" type="number">
-                    <button>Convent</button>
+                    <input name="summa" class="summa" placeholder="100" type="number">
+                    <button class="convertBtn">Convent</button>
                 </div>
-            </div>
+    
+                <p class="totaly"></p>
+            </form>
+        </div>
+
+
     </div>
-    </div>
+    
+
+    <script src="path/to/chartjs/dist/chart.umd.js"></script>
+  
 
     <script type="module" src="./scriot.js"></script>
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
 </body>
 
 </html>

@@ -44,12 +44,10 @@ function RGB() {
         }
     };
 
-    wallet.dataset.walletId = item.id; 
+   
 
     wallet.onclick = () => {
-        const walletId = wallet.dataset.walletId;
-        localStorage.setItem('selectedWalletId', walletId);
-        location.assign('/pages/currency/');
+        location.assign('/pages/currency/?id=' + item.id);
     };
 
     wallet.append(nameCard, valute);

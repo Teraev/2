@@ -45,6 +45,7 @@ export function reloadHead() {
 
     exit.onclick = () => {
         location.assign('/pages/signin/');
+        localStorage.removeItem('user')
     }
 
     left.classList.add('left');
@@ -116,12 +117,10 @@ export async function reloadCard(item, place) {
         }
     };
 
-    wallet.dataset.walletId = item.id; 
+ 
 
     wallet.onclick = () => {
-        const walletId = wallet.dataset.walletId;
-        localStorage.setItem('selectedWalletId', walletId);
-        location.assign('/pages/currency/');
+        location.assign('/pages/currency/?id=' + item.id);
     };
 
     wallet.append(nameCard, valute);
